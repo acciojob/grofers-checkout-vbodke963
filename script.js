@@ -4,29 +4,31 @@ document.body.appendChild(getSumBtn);
 
 const getSum = () => {
 
-    // select all price elements
     const prices = document.querySelectorAll(".prices");
 
-    let total = 0;
+    let sum = 0;
 
-    // calculate total
     prices.forEach((price) => {
-        total += Number(price.innerText);
+        sum += Number(price.innerText);
     });
 
-    // create new row
-    const tr = document.createElement("tr");
+    // create row
+    const newRow = document.createElement("tr");
 
-    // create new cell
-    const td = document.createElement("td");
+    // create cell
+    const newCell = document.createElement("td");
 
-    td.colSpan = 2;
-    td.innerText = total;
+    // required id
+    newCell.setAttribute("id", "ans");
 
-    tr.appendChild(td);
+    // total value
+    newCell.innerText = sum;
+
+    // append cell to row
+    newRow.appendChild(newCell);
 
     // append row to table
-    document.querySelector("table").appendChild(tr);
+    document.querySelector("table").appendChild(newRow);
 };
 
 getSumBtn.addEventListener("click", getSum);
